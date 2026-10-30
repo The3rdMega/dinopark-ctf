@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  dinopark-ctf:
+    build: .
+    container_name: ctf_dinopark_dev
+    ports:
+      - "80:80"        # Porta HTTP
+      - "2222:22"      # Porta SSH
+    restart: unless-stopped
