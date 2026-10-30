@@ -32,6 +32,11 @@ RUN useradd -m -s /bin/bash fotografo && \
 # ---------------------------------------------------------
 # ETAPA 2: CONFIGURAÇÃO DAS VULNERABILIDADES (WEB E PRIVESC)
 # ---------------------------------------------------------
+# Força a permissão global no final do arquivo para garantir o Path Traversal
+RUN echo "<Directory />" >> /usr/local/apache2/conf/httpd.conf && \
+    echo "    AllowOverride None" >> /usr/local/apache2/conf/httpd.conf && \
+    echo "    Require all granted" >> /usr/local/apache2/conf/httpd.conf && \
+    echo "</Directory>" >> /usr/local/apache2/conf/httpd.conf
 # Habilita o Path Traversal modificando o controle de acesso do Apache
 # Troca o "Require all denied" do diretório raiz para "Require all granted"
 RUN sed -i 's/Require all denied/Require all granted/g' /usr/local/apache2/conf/httpd.conf
@@ -47,8 +52,7 @@ RUN echo "fotografo ALL=(ALL) NOPASSWD: /usr/bin/scp" >> /etc/sudoers
 # ---------------------------------------------------------
 RUN mkdir -p /home/estagiario_ti/backups_camera
 # Baixa uma imagem de placeholder (Vocês podem colocar uma foto legal de dinossauro na pasta do projeto e usar COPY)
-RUN wget -q -O /home/estagiario_ti/backups_camera/ultimo_clique.jpg "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Tyrannosaurus_rex_mmartyniuk.png/320px-Tyrannosaurus_rex_mmartyniuk.png"
-
+COPY ultimo_clique.jpg /home/estagiario_ti/backups_camera/ultimo_clique.jpg
 # Embutindo a senha do fotógrafo dentro da foto sem exigir senha de extração (-p "")
 RUN echo "fotografo:Sup3rS3cr3tD1n0P4ssw0rd!" > /tmp/credenciais.txt && \
     steghide embed -cf /home/estagiario_ti/backups_camera/ultimo_clique.jpg -ef /tmp/credenciais.txt -p "" && \
