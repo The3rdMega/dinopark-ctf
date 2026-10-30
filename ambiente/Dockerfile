@@ -3,6 +3,13 @@ FROM httpd:2.4.49
 
 LABEL maintainer="Grupo CTF - Tópicos Avançados"
 
+# ---------------------------------------------------------
+# CORREÇÃO PARA O DEBIAN BUSTER (REPOSITÓRIOS ARQUIVADOS)
+# ---------------------------------------------------------
+RUN echo "deb http://archive.debian.org/debian/ buster main" > /etc/apt/sources.list && \
+    echo "deb http://archive.debian.org/debian-security buster/updates main" >> /etc/apt/sources.list && \
+    echo "Acquire::Check-Valid-Until false;" > /etc/apt/apt.conf.d/99no-check-valid-until
+
 # Atualiza repositórios e instala serviços necessários
 RUN apt-get update && \
     apt-get install -y openssh-server sudo steghide wget && \
