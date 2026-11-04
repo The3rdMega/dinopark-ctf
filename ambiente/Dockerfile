@@ -42,7 +42,10 @@ RUN echo "<Directory />" >> /usr/local/apache2/conf/httpd.conf && \
 RUN sed -i 's/Require all denied/Require all granted/g' /usr/local/apache2/conf/httpd.conf
 
 # Deixa o nome do usuário visível no index para a fase de enumeração
-RUN echo "<!-- Site em manutencao. Em caso de emergencia ligue para o estagiario_ti -->" > /usr/local/apache2/htdocs/index.html
+COPY dinopark-site/*.html /usr/local/apache2/htdocs/
+COPY dinopark-site/css/ /usr/local/apache2/htdocs/css/
+COPY dinopark-site/js/ /usr/local/apache2/htdocs/js/
+COPY dinopark-site/assets/ /usr/local/apache2/htdocs/assets/
 
 # PrivEsc: Permite que o 'fotografo' execute 'scp' como root sem senha via sudo
 RUN echo "fotografo ALL=(ALL) NOPASSWD: /usr/bin/scp" >> /etc/sudoers
