@@ -23,7 +23,7 @@ RUN mkdir /var/run/sshd
 # ---------------------------------------------------------
 # Usuário 1: estagiario_ti (Senha fraca para o Hydra quebrar - presente na rockyou.txt)
 RUN useradd -m -s /bin/bash estagiario_ti && \
-    echo "estagiario_ti:hunter2" | chpasswd
+    echo "estagiario_ti:welcome" | chpasswd
 
 # Usuário 2: fotografo (Senha complexa que será escondida)
 RUN useradd -m -s /bin/bash fotografo && \
@@ -66,12 +66,12 @@ RUN chown -R estagiario_ti:estagiario_ti /home/estagiario_ti/backups_camera
 # ETAPA 4: CRIAÇÃO DAS FLAGS
 # ---------------------------------------------------------
 # User Flag
-RUN echo "TAC{clever_girl_7382}" > /home/fotografo/user.txt && \
+RUN echo "TAC{0ne_La5t_Fla5h_}" > /home/fotografo/user.txt && \
     chown fotografo:fotografo /home/fotografo/user.txt && \
     chmod 600 /home/fotografo/user.txt
 
 # Root Flag
-RUN echo "TAC{t_rex_is_loose_run}" > /root/root.txt && \
+RUN echo "TAC{t_rex_is_loose_RUN}" > /root/root.txt && \
     chmod 600 /root/root.txt
 
 # ---------------------------------------------------------
