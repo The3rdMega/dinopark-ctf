@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   dinopark-ctf:
-    image: gibi177/dinopark-ctf:1.1
+    image: gibi177/dinopark-ctf:1.2
     container_name: ctf_dinopark
     ports:
       - "80:80" # Porta HTTP
