@@ -187,8 +187,8 @@ A cadeia completa (enumeração web → RCE/Path Traversal → enumeração de u
 
 ## 6. Referências
 
-- [CVE-2021-41773 — NVD](https://nvd.nist.gov/vuln/detail/CVE-2021-41773)
-- [Apache HTTP Server 2.4.49 — Path Traversal & RCE (Exploit-DB 50383)](https://www.exploit-db.com/exploits/50383)
-- [GTFOBins — scp](https://gtfobins.github.io/gtfobins/scp/)
-- [steghide — documentação oficial](http://steghide.sourceforge.net/documentation.php)
-- [stegseek — repositório oficial](https://github.com/RickdeJager/stegseek)
+- [CVE-2021-41773 - NVD](https://nvd.nist.gov/vuln/detail/CVE-2021-41773)
+- [Apache HTTP Server 2.4.49 - Path Traversal & RCE (Exploit-DB 50383)](https://www.exploit-db.com/exploits/50383)
+- [GTFOBins - scp](https://gtfobins.github.io/gtfobins/scp/)
+- [steghide - documentação oficial](http://steghide.sourceforge.net/documentation.php)
+- [stegseek - repositório oficial](https://github.com/RickdeJager/stegseek)
