@@ -12,11 +12,18 @@ RUN echo "deb http://archive.debian.org/debian/ buster main" > /etc/apt/sources.
 
 # Atualiza repositórios e instala serviços necessários
 RUN apt-get update && \
-    apt-get install -y openssh-server sudo steghide wget && \
+    apt-get install -y openssh-server sudo steghide wget \
+    binutils libimage-exiftool-perl file xxd binwalk && \
     apt-get clean
 
 # Configuração essencial do SSH
 RUN mkdir /var/run/sshd
+
+# Adiciona o Banner SSH (MOTD - Message of the Day) corporativo
+RUN echo "===================================================" > /etc/motd && \
+    echo " ATENCAO: SISTEMA DA DINOPARK CORPORATION" >> /etc/motd && \
+    echo " Acesso restrito. Todas as atividades sao monitoradas." >> /etc/motd && \
+    echo "===================================================" >> /etc/motd
 
 # ---------------------------------------------------------
 # ETAPA 1: CRIAÇÃO DOS USUÁRIOS E SENHAS
@@ -24,6 +31,13 @@ RUN mkdir /var/run/sshd
 # Usuário 1: estagiario_ti (Senha fraca para o Hydra quebrar - presente na rockyou.txt)
 RUN useradd -m -s /bin/bash estagiario_ti && \
     echo "estagiario_ti:welcome" | chpasswd
+
+# Adiciona o histórico de comandos falso (Red Herring) para o estagiário
+RUN echo "ping 8.8.8.8" > /home/estagiario_ti/.bash_history && \
+    echo "steghide --help" >> /home/estagiario_ti/.bash_history && \
+    echo "echo 'preciso avisar o chefe sobre a foto' > notas.txt" >> /home/estagiario_ti/.bash_history && \
+    echo "rm notas.txt" >> /home/estagiario_ti/.bash_history && \
+    chown estagiario_ti:estagiario_ti /home/estagiario_ti/.bash_history
 
 # Usuário 2: fotografo (Senha complexa que será escondida)
 RUN useradd -m -s /bin/bash fotografo && \
