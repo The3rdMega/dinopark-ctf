@@ -18,7 +18,7 @@ O desafio possui **duas flags**, no formato `TAC{...}`: uma flag de usuário, ob
 **1. Baixar a imagem** (não é necessário ter conta no Docker Hub):
 
 ```bash
-docker pull gibi177/dinopark-ctf:1.1
+docker pull gibi177/dinopark-ctf:1.2
 ```
 
 **2. Subir o desafio:**
@@ -27,7 +27,7 @@ docker pull gibi177/dinopark-ctf:1.1
 docker run -d --name dinopark-ctf \
   -p 8080:80 \
   -p 2222:22 \
-  gibi177/dinopark-ctf:1.1
+  gibi177/dinopark-ctf:1.2
 ```
 
 **3. Atacar**, usando `localhost` (ou `127.0.0.1`) como IP-alvo, portas `8080` (HTTP) e `2222` (SSH).
