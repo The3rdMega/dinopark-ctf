@@ -2,11 +2,9 @@ version: '3.8'
 
 services:
   dinopark-ctf:
-    # Substitua "seugrupo" pelo usuário do Docker Hub onde vocês farão o push da imagem
-    image: gibi177/dinopark-ctf:1.0
+    image: gibi177/dinopark-ctf:1.1
     container_name: ctf_dinopark
     ports:
       - "80:80" # Porta HTTP
       - "2222:22" # Porta SSH (Mapeada para 2222 para não conflitar com o SSH do host)
     restart: unless-stopped
-
