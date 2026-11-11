@@ -24,10 +24,7 @@ docker pull gibi177/dinopark-ctf:1.2
 **2. Subir o desafio:**
 
 ```bash
-docker run -d --name dinopark-ctf \
-  -p 8080:80 \
-  -p 2222:22 \
-  gibi177/dinopark-ctf:1.2
+docker compose up -d
 ```
 
 **3. Atacar**, usando `localhost` (ou `127.0.0.1`) como IP-alvo, portas `8080` (HTTP) e `2222` (SSH).
@@ -35,7 +32,7 @@ docker run -d --name dinopark-ctf \
 **4. Parar e remover o container** ao final:
 
 ```bash
-docker rm -f dinopark-ctf
+docker compose down
 ```
 
 Para jogar novamente, basta repetir o comando do passo 2.

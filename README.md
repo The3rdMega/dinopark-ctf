@@ -13,20 +13,17 @@ docker pull gibi177/dinopark-ctf:1.2
 ## 2. Rodar o desafio
 
 ```bash
-docker run -d --name dinopark-ctf \
-  -p 8080:80 \
-  -p 2222:22 \
-  gibi177/dinopark-ctf:1.2
+docker compose up -d
 ```
 
 ## 3. Acessar
 
-Resolva normalmente, usando localhost como IP-alvo.
+Resolva normalmente, usando localhost como IP-alvo. (Portas 80 para HTTP e 2222 para SSH).
 
 ## 4. Parar e remover
 
 ```bash
-docker rm -f dinopark-ctf
+docker compose down
 ```
 
 Para jogar novamente, execute o comando do passo 2.
@@ -41,4 +38,4 @@ Para jogar novamente, execute o comando do passo 2.
 
 - Ataque apenas o container do desafio. Não ataque o host, a rede ou outros alunos.
 - Se a imagem não baixar, confirme que o Docker está rodando.
-- Para ver os logs do container: `docker logs dinopark-ctf`.
+- Para ver os logs do container: `docker compose logs`.
